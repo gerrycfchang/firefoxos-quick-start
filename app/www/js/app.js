@@ -2,7 +2,7 @@
 // This uses require.js to structure javascript:
 // http://requirejs.org/docs/api.html#define
 
-define(function(require) {
+
     // Zepto provides nice js and DOM methods (very similar to jQuery,
     // and a lot smaller):
     // http://zeptojs.com/
@@ -15,8 +15,9 @@ define(function(require) {
     // Want to install the app locally? This library hooks up the
     // installation button. See <button class="install-btn"> in
     // index.html
-    require('./install-button');
-
+    //require('./install-button');
+    var ath_ins = AdvancedTelemetryHelper;
+    var count = new AdvancedTelemetryHelper(ath_ins.HISTOGRAM_COUNT, 'mycount');
     // Write your app here.
 
     // Create the battery indicator listeners
@@ -76,30 +77,7 @@ define(function(require) {
             if('vibrate' in navigator) {
                 navigator.vibrate(200);
             }
-
-            //  As an example of using priviledged WebAPIs, 
-            //  we'll use the systemXHR API to send the new item value
-            //  to a (fake) social site.  systemXHR is used more for 
-            //  packaged apps since hosted apps can proxy, but 
-            //  is presented here for those looking to build
-            //  a hosted app instead.
-            try {
-                var xhr = new XMLHttpRequest({
-                    mozSystem: true // use systemXHR
-                });
-                xhr.addEventListener('load', function(e) {
-                    // All good, posted to social site!
-                });
-                xhr.open('POST', 'http://areatweet.com', true);
-                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                xhr.send('item=' + itemInput.value);
-            }
-            catch(e){
-                console.log('XHR Error!  systemXHR not implemented or no permissions');
-            }
-            
-            
-
+            count.add();            
             form.reset();
           }
 
@@ -154,4 +132,3 @@ define(function(require) {
         }
 
       })();
-});
