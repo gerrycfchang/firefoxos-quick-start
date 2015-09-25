@@ -69,19 +69,27 @@
         // Add a new item upon form submission
         form.addEventListener('submit', function(e) {
           e.preventDefault();
+          btn_type = e.explicitOriginalTarget.innerHTML;
 
           if(itemInput.value) {
             items.push(itemInput.value);
             save();
             addItem(itemInput.value);
+            var num = isNaN(parseInt(itemInput.value)) ? 0 : parseInt(itemInput.value)
+            switch(btn_type)
+            {
+                case "Simple":
+                    count.add();
+                    break;
+                case "Linear":                    
+                    linear.add(num);
+                    break;
+                case "Exp":
+                    exp.add(num+20);
+                    break;
+                default:
 
-            // Use the vibrate API to acknowledge the item was added
-            if('vibrate' in navigator) {
-                //navigator.vibrate(200);
             }
-            count.add();        
-            linear.add(15);  
-            exp.add(35);  
             form.reset();
           }
 
@@ -136,3 +144,4 @@
         }
 
       })();
+
