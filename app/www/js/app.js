@@ -18,7 +18,7 @@
     //require('./install-button');
     var ath_ins = AdvancedTelemetryHelper;
     var count  = new AdvancedTelemetryHelper(ath_ins.HISTOGRAM_COUNT, 'mycount');
-    var linear = new AdvancedTelemetryHelper(ath_ins.HISTOGRAM_LINEAR, 'mylinear', 1, 1000, 12);
+    var linear = new AdvancedTelemetryHelper(ath_ins.HISTOGRAM_LINEAR, 'mylinear', 5, 1000, 12);
     var exp    = new AdvancedTelemetryHelper(ath_ins.HISTOGRAM_EXP, 'myexp', 1, 500, 5);
     // Write your app here.
 
@@ -77,11 +77,11 @@
 
             // Use the vibrate API to acknowledge the item was added
             if('vibrate' in navigator) {
-                navigator.vibrate(200);
+                //navigator.vibrate(200);
             }
             count.add();        
             linear.add(15);  
-            exp.add(25);  
+            exp.add(35);  
             form.reset();
           }
 
