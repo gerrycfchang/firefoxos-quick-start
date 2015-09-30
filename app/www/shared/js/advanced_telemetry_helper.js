@@ -108,7 +108,7 @@
 
   AdvancedTelemetryHelper.init = function init() {
     ATH.telemetryEnabledListener = function telemetryEnabledListener(enabled) {
-      ATH.TELEMETRY_ENABLED = true;
+      ATH.TELEMETRY_ENABLED = enabled;
     }.bind(this);
 
     SettingsListener.observe(ATH.TELEMETRY_ENABLED_KEY,
