@@ -23,6 +23,7 @@
     // Write your app here.
     window.performance.mark('navigationLoaded');
     window.performance.mark('visuallyLoaded');
+    window.performance.mark('contentInteractive');
     // Create the battery indicator listeners
     (function() {
       var battery = navigator.battery || navigator.mozBattery || navigator.webkitBattery,
