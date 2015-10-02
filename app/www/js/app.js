@@ -76,17 +76,20 @@
           if(itemInput.value) {
             items.push(itemInput.value);
             save();
-            addItem(itemInput.value);
+            //addItem(itemInput.value);
             var num = isNaN(parseInt(itemInput.value)) ? 0 : parseInt(itemInput.value)
             switch(btn_type)
             {
                 case "Simple":
+                    addItem("S : " + itemInput.value);
                     count.add();
                     break;
-                case "Linear":                    
+                case "Linear":  
+                    addItem("L : " + itemInput.value);                  
                     linear.add(num);
                     break;
                 case "Exp":
+                    addItem("E : " + itemInput.value);
                     exp.add(num+20);
                     break;
                 default:
